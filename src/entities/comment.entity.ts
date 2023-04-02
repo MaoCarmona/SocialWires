@@ -1,20 +1,18 @@
-import { User } from 'src/auth/entities/user.entity';
+import { User } from './user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Message } from './message.entity';
 
 @Entity()
-export class Reaction {
+export class Comments {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 10 })
-  type: string;
+  @Column()
+  content: string;
 
   @ManyToOne(() => User)
   author: User;
 
-  @ManyToOne(() => Message, (message) => message.reactions, {
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne(() => Message, (message) => message.comments, {onDelete: 'CASCADE'})
   message: Message;
 }

@@ -15,8 +15,8 @@ import { AuthController } from './controllers/auth.controller';
       signOptions: { expiresIn: '1d' },
     }),
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService],
   controllers: [AuthController],
-  exports: [JwtStrategy, PassportModule],
+  exports: [ PassportModule],
 })
 export class AuthModule {}
